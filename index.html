@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wavelength — Music Player</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app">
+
+    <!-- Sidebar: Playlist -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <span class="logo">WAVELENGTH</span>
+        <span class="track-count" id="trackCount">6 tracks</span>
+      </div>
+      <ul class="playlist" id="playlist"></ul>
+    </aside>
+
+    <!-- Main Player -->
+    <main class="player">
+
+      <!-- Album Art -->
+      <div class="art-wrap">
+        <div class="album-art" id="albumArt">
+          <svg class="art-icon" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="40" cy="40" r="28" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <circle cx="40" cy="40" r="6" fill="currentColor"/>
+            <circle cx="40" cy="40" r="2" fill="var(--bg)"/>
+          </svg>
+          <div class="vinyl-groove"></div>
+        </div>
+        <div class="art-shadow"></div>
+      </div>
+
+      <!-- Track Info -->
+      <div class="track-info">
+        <p class="track-artist" id="trackArtist">Artist</p>
+        <h1 class="track-title" id="trackTitle">Select a track</h1>
+        <p class="track-album" id="trackAlbum">Album · Year</p>
+      </div>
+
+      <!-- Waveform / Progress -->
+      <div class="progress-section">
+        <canvas class="waveform" id="waveform" height="48"></canvas>
+        <div class="seek-bar" id="seekBar">
+          <div class="seek-fill" id="seekFill"></div>
+          <div class="seek-thumb" id="seekThumb"></div>
+        </div>
+        <div class="time-row">
+          <span class="time" id="currentTime">0:00</span>
+          <span class="time" id="duration">0:00</span>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="controls">
+        <button class="ctrl-btn secondary" id="shuffleBtn" title="Shuffle">
+          <svg viewBox="0 0 24 24"><path d="M16 3l4 4-4 4M20 7H4M8 21l-4-4 4-4M4 17h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+        </button>
+        <button class="ctrl-btn" id="prevBtn" title="Previous">
+          <svg viewBox="0 0 24 24"><path d="M19 20L9 12l10-8v16zM5 4v16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+        </button>
+        <button class="ctrl-btn play-btn" id="playBtn" title="Play/Pause">
+          <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21" fill="currentColor"/></svg>
+          <svg class="icon-pause" viewBox="0 0 24 24" style="display:none"><rect x="6" y="4" width="4" height="16" fill="currentColor"/><rect x="14" y="4" width="4" height="16" fill="currentColor"/></svg>
+        </button>
+        <button class="ctrl-btn" id="nextBtn" title="Next">
+          <svg viewBox="0 0 24 24"><path d="M5 4l10 8-10 8V4zM19 4v16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+        </button>
+        <button class="ctrl-btn secondary" id="repeatBtn" title="Repeat">
+          <svg viewBox="0 0 24 24"><path d="M17 1l4 4-4 4M3 11V9a4 4 0 014-4h14M7 23l-4-4 4-4M21 13v2a4 4 0 01-4 4H3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+        </button>
+      </div>
+
+      <!-- Volume -->
+      <div class="volume-row">
+        <button class="icon-btn" id="muteBtn">
+          <svg class="vol-icon" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5zM19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+        </button>
+        <div class="vol-bar" id="volBar">
+          <div class="vol-fill" id="volFill" style="width:75%"></div>
+          <div class="vol-thumb" id="volThumb" style="left:75%"></div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <audio id="audioPlayer"></audio>
+  <script src="player.js"></script>
+</body>
+</html>
