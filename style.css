@@ -9,7 +9,7 @@
   --text:      #a8d4a8;
   --text-hi:   #d4f0d4;
   --accent:    #2ecc5a;
-  --accent-2:  #1aff6e;
+  --accent-2:  #a8d4a8;
   --danger:    #ff4a6a;
 
   --font-ui:   'Space Grotesk', sans-serif;
@@ -64,6 +64,9 @@ ul { list-style: none; }
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.18em;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  -webkit-backgroundclip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .track-count {
